@@ -1,18 +1,28 @@
-from flask_wtf import Form, FlaskForm
+from flask_wtf import FlaskForm
 from flask_wtf.file import FileRequired
-from wtforms import StringField, SubmitField, IntegerField, SelectField, \
-DecimalField, DateField, BooleanField, FileField, SubmitField, TextAreaField, PasswordField
-from wtforms.validators import Email, Length, DataRequired, Regexp, NumberRange, EqualTo
+from wtforms import (
+    StringField,
+    IntegerField,
+    SelectField,
+    DecimalField,
+    DateField,
+    BooleanField,
+    FileField,
+    SubmitField,
+    TextAreaField,
+    PasswordField
+)
+from wtforms.validators import Email, Length, DataRequired, NumberRange, EqualTo
 
 
-class buy_form(FlaskForm):
+class BuyForm(FlaskForm):
     quantity = IntegerField(
         'Quantity to buy',
         validators=[NumberRange(min=1, message="Must buy more than 0.")])
     submit = SubmitField('Pay')
 
 
-class add_listing_form(FlaskForm):
+class AddListingForm(FlaskForm):
     title = StringField(
         'Title', validators=[Length(min=1, message="A title is required.")])
     photo = FileField(
@@ -39,13 +49,13 @@ class add_listing_form(FlaskForm):
     submit = SubmitField('Add')
 
 
-class login_form(FlaskForm):
+class LoginForm(FlaskForm):
     email = StringField('E-mail Address', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Log In')
 
 
-class member_form(FlaskForm):
+class MemberForm(FlaskForm):
     email = StringField('Email', validators=[Email()])
     first_name = StringField('First Name', validators=[Length(min=1, max=40)])
     last_name = StringField('Last Name', validators=[Length(min=1, max=40)])

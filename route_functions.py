@@ -1,5 +1,4 @@
 import db
-import pprint as pp
 
 
 def search(results, q):
@@ -17,7 +16,7 @@ def search(results, q):
     return results
 
 
-def filter(results, filter_id, q):
+def filter_by(results, filter_id, q):
     results['listings'] = []
     results['categories'] = []
     results['users'] = []
